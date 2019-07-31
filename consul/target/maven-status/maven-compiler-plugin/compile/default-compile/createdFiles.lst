@@ -1,0 +1,4 @@
+com\springboot\consul\TeachConfig.class
+com\springboot\consul\ServletInitializer.class
+com\springboot\consul\StudentConfig.class
+com\springboot\consul\ConsulApplication.class
