@@ -1,0 +1,43 @@
+version: '3'
+services:
+  consul:
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
+    ports:
+     - "8500:8500"
+    command: >
+      java
+      -jar /server/consul-0.0.1-SNAPSHOT.jar
+  microauth:
+    build:
+      context: ./microauth
+    volumes:
+      - ./microauth/authorizationServer.js:/server/authorizationServer.js
+    ports:
+      - "9001:9001"
+    command: node ./authorizationServer.js
+  server:
+    build:
+      context: ./server-dev
+    ports:
+     - "9999:9999"
+    volumes:
+     - ./target/:/server/
+    command: >
+      java
+      -Xdebug -Xrunjdwp:transport=dt_socket,address=*:9999,server=y,suspend=n
+      -jar /server/fapi-test-suite.jar
+      --fintechlabs.devmode=true
+      --fintechlabs.startredir=true
+    links:
+     - mongodb:mongodb
+     - microauth:microauth
+    depends_on:
+     - mongodb
+    logging:
+      # limit logs retained on host
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "5"
