@@ -4,13 +4,13 @@ info:
     name: consul
 
 server:
-  port: 8080
+  port: 8090
 
 spring:
   application:
     name: consul-service
   profiles:
-    active: consul-service
+    active: dev
   cloud:
     consul:
       host: localhost
