@@ -1,0 +1,39 @@
+node {
+    currentBuild.result = "SUCCESS"
+
+    name_list = "$JOB_NAME".split('/') //eg : 'qloudtest-obptest/master' --> ['qloudtest-obptest', 'master']
+    def job = name_list[0]           //eg : 'qloudtest-obptest'
+    def ver = name_list[1]           //eg : 'master'
+    job_list = "$job".split('-')      //eg : 'qloudtest-obptest' --> ['qloudtest', 'obptest']
+    def project = job_list[0]            //eg : 'qloudtest'
+    def item = job_list[1]               //eg : 'obptest'
+    def itemhttpd = item+'httpd'
+
+    def taghttpd = "reg.qloudhub.com/'${project}'/'${itemhttpd}':latest'$BUILD_NUMBER'"
+
+    try {
+       // server 代码构建
+       stage('Build') {
+		   dir('server-dev'){
+			   sh("docker build -t ${tagserver} .")
+			   sh("docker push ${tagserver}")
+		   }
+		}
+	   stage('Cleanup') {
+			sh("docker rmi ${tagserver}")
+			sh("docker rmi ${tagauth}")
+			sh("docker rmi ${taghttpd}")
+			sh "rm -rf *"
+			sh "rm -rf .git"
+	   }
+    } catch (err) {
+        currentBuild.result = "FAILURE"
+        throw err
+    }
+}
+
+
+
+
+
+
