@@ -1,0 +1,30 @@
+info:
+  app:
+    version: 2.2.0.M4
+    name: security
+
+server:
+  port: 8093
+
+spring:
+  application:
+    name: security-service
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: # 服务发现配置
+        enabled: true
+        register: true
+        deregister: true
+        prefer-ip-address: true
+        health-check-interval: 10s
+        health-check-critical-timeout: 30s
+        health-check-path: /health
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} # 应用名称+服务器IP+端口
+
+logging:
+  level:
+    org.springframework.cloud.consul: DEBUG

@@ -6,7 +6,8 @@
 		<module>consul</module>
         <module>gateway</module>
         <module>mongodb</module>
-    </modules>
+		<module>security</module>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
