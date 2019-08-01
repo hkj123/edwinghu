@@ -1,0 +1,36 @@
+info:
+  app:
+    version: 2.2.0.M4
+    name: mongodb
+
+server:
+  port: 8092
+
+spring:
+  application:
+    name: mongodb-service
+  profiles:
+    active: dev
+  data:
+    mongodb:
+      uri: mongodb://qloudmongodb.pditdapps.service.sd:80/test_suite
+#      root:Qloud%40dev?123@
+#      对username和password中包含的@和:进行url编码，@的url编码为%40，:的编码为%3a。
+#      String uri ="mongodb://ab%40c:al%3aex@127.0.0.1:27017/dbname";
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery: # 服务发现配置
+#        enabled: true
+#        register: true
+#        deregister: true
+#        prefer-ip-address: true
+#        health-check-interval: 10s
+#        health-check-critical-timeout: 30s
+#        health-check-path: /health
+#        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} # 应用名称+服务器IP+端口
+
+logging:
+  level:
+    org.springframework.cloud.consul: DEBUG

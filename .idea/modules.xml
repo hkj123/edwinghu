@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/consul/consul.iml" filepath="$PROJECT_DIR$/consul/consul.iml" />
       <module fileurl="file://$PROJECT_DIR$/edwinghu.iml" filepath="$PROJECT_DIR$/edwinghu.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongodb/mongodb.iml" filepath="$PROJECT_DIR$/mongodb/mongodb.iml" />
     </modules>
   </component>
 </project>
