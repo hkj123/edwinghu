@@ -13,6 +13,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="admin" target="8" />
       <module name="consul" target="8" />
       <module name="edwinghu" target="8" />
       <module name="gateway" target="8" />
@@ -22,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
       <module name="consul" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="mongodb" options="-parameters" />
