@@ -1,5 +1,7 @@
 package com.springboot.mybatis.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.springboot.mybatis.entity.User;
 import com.springboot.mybatis.service.UserService;
 import com.springboot.mybatis.utils.Result;
@@ -27,4 +29,10 @@ public class UserController extends BaseController {
         }
     }
 
+    @PostMapping("/findByPage")
+    public Result findByPaging(Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum,pageSize);
+        Page<User> userList= userService.findByPaging();
+        return new Result(Result.ReturnValue.SUCCESS, "", userList);
+    }
 }

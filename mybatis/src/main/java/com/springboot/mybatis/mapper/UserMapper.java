@@ -1,5 +1,6 @@
 package com.springboot.mybatis.mapper;
 
+import com.github.pagehelper.Page;
 import com.springboot.mybatis.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,4 +13,6 @@ import java.util.List;
 public interface UserMapper {
 
     List<User> findAll();
+
+    Page<User> findByPaging();
 }
