@@ -9,8 +9,8 @@ server:
 spring:
   application:
     name: mybatis-service
-  profiles:
-    active: @spring.profiles.active@
+#  profiles:
+#    active: @spring.profiles.active@
   cloud:
     consul:
       host: localhost
@@ -38,6 +38,9 @@ spring:
       min-idle: 5
       max-wait: 60000
       pool-prepared-statements: true
+      url: jdbc:mysql://localhost:3306/test?useAffectedRows=true&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+      username: hukaijia
+      password: Hukaijia.110
       max-pool-prepared-statement-per-connection-size: 20
       #      validation-query: SELECT 1 FROM DUAL
       #      validation-query-timeout: 60000
@@ -76,8 +79,8 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*.xml         #配置映射文件位置，classpath指resources
   type-aliases-package: com.springboot.mybatis.entity     #实体类所在位置
-  configuration:                                    #打印sql到控制台
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:                                    #打印sql到控制台
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 pagehelper:
   helperDialect: mysql                           #分页插件方言选择

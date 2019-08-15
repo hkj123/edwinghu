@@ -29,7 +29,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PostMapping("/findByPage")
+    @GetMapping("/findByPage")
     public Result findByPaging(Integer pageNum, Integer pageSize){
         PageHelper.startPage(pageNum,pageSize);
         Page<User> userList= userService.findByPaging();
