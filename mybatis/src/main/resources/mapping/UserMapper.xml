@@ -5,4 +5,9 @@
     <select id="findAll" resultType="com.springboot.mybatis.entity.User">
         select * from user_inform
     </select>
+
+    <select id="findByPaging" resultMap="com.springboot.mybatis.entity.User" parameterType="com.github.pagehelper.Page">
+        select *  from user_inform
+    </select>
+
 </mapper>
