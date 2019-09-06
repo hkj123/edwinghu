@@ -1,14 +1,32 @@
 package com.springboot.mybatis.controller;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.ECDSASigner;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.RSASSASigner;
+import com.nimbusds.jose.jwk.*;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
 import com.springboot.mybatis.entity.User;
 import com.springboot.mybatis.service.UserService;
 import com.springboot.mybatis.utils.Result;
+import com.springboot.mybatis.utils.SerializeUtil;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController   //注意模板 需要这个
 @RequestMapping("/user")
@@ -30,9 +48,61 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/findByPage")
-    public Result findByPaging(Integer pageNum, Integer pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        Page<User> userList= userService.findByPaging();
+    public Result findByPaging(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        Page<User> userList = userService.findByPaging();
         return new Result(Result.ReturnValue.SUCCESS, "", userList);
+    }
+
+    public static void main(String[] args) {
+        try {
+
+            BufferedReader reader1  = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("claims.json"),"UTF-8"));
+            StringBuilder sb1 = new StringBuilder();
+            String s1; // 依次循环，至到读的值为空
+            while ((s1 = reader1.readLine()) != null) {
+                sb1.append(s1);
+            }
+            reader1.close();
+
+            String requestObjectClaims = sb1.toString();
+
+            BufferedReader reader  = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("jwk.json"),"UTF-8"));
+            StringBuilder sb = new StringBuilder();
+            String s; // 依次循环，至到读的值为空
+            while ((s = reader.readLine()) != null) {
+                sb.append(s);
+            }
+            reader.close();
+
+            String jwks = sb.toString();
+
+            JWTClaimsSet claimSet = JWTClaimsSet.parse(requestObjectClaims);
+            JWKSet jwkSet = JWKSet.parse(jwks);
+            if (jwkSet.getKeys().size() == 1) {
+                // figure out which algorithm to use
+                JWK jwk = jwkSet.getKeys().iterator().next();
+
+                JWSSigner signer = null;
+                if (jwk.getKeyType().equals(KeyType.RSA)) {
+                    signer = new RSASSASigner((RSAKey) jwk);
+                } else if (jwk.getKeyType().equals(KeyType.EC)) {
+                    signer = new ECDSASigner((ECKey) jwk);
+                } else if (jwk.getKeyType().equals(KeyType.OCT)) {
+                    signer = new MACSigner((OctetSequenceKey) jwk);
+                }
+                //
+                JWSHeader header = new JWSHeader(JWSAlgorithm.parse("RS256"), JOSEObjectType.JWT, null, null, null, null, null, null, null, null, "client1-RS256", null, null);
+                SignedJWT requestObject = new SignedJWT(header, claimSet);
+                requestObject.sign(signer);
+                System.out.println("**********claims" + claimSet.toString());
+                System.out.println("**********header" + header.toString());
+                System.out.println("**********requestObject" + requestObject.serialize());
+                System.out.println("**********key" + jwk.toJSONString());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
