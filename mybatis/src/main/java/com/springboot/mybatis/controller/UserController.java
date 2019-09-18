@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.springboot.mybatis.entity.User;
 import com.springboot.mybatis.service.UserService;
+import com.springboot.mybatis.utils.HttpClientUtil;
 import com.springboot.mybatis.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -102,15 +103,15 @@ public class UserController extends BaseController {
 //
 //        String httpOrgCreateTestRtn = HttpClientUtil.doPost(url, headerBody, entityBody, "utf-8");
 
-//        String url = "https://qloudpdp.pditdap.service.sd/auth/realms/openbankingrs256/protocol/openid-connect/token";
-//        Map<String, String> headerBody = new HashMap<>();
-//        headerBody.put("Content-Type", "application/x-www-form-urlencoded");
-//
-//        Map<String, String> entityBody = new HashMap<>();
-//        entityBody.put("grant_type", "client_credentials");
-//        entityBody.put("client_id", "client1-mtls-RS256-PS256");
-//        entityBody.put("scope", "accounts");
-//
-//        String httpOrgCreateTestRtn = HttpClientUtil.doPost(url, headerBody, entityBody, "utf-8");
+        String url = "https://qloudpdp.pditdap.service.sd/auth/realms/openbankingrs256/protocol/openid-connect/token";
+        Map<String, String> headerBody = new HashMap<>();
+        headerBody.put("Content-Type", "application/x-www-form-urlencoded");
+
+        Map<String, String> entityBody = new HashMap<>();
+        entityBody.put("grant_type", "client_credentials");
+        entityBody.put("client_id", "client1-mtls-RS256-PS256");
+        entityBody.put("scope", "accounts");
+
+        String httpOrgCreateTestRtn = HttpClientUtil.doPost(url, headerBody, entityBody, "utf-8");
     }
 }
