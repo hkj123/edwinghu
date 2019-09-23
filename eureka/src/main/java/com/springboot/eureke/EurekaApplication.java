@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @EnableEurekaServer
-//@SpringBootApplication
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication
 public class EurekaApplication {
     private static final Logger log = LoggerFactory.getLogger(EurekaApplication.class);
 
@@ -27,16 +26,3 @@ public class EurekaApplication {
     }
 }
 //		http://localhost:1111/
-
-//@RestController
-//class ServiceInstanceRestController {
-//
-//    @Autowired
-//    private DiscoveryClient discoveryClient;
-//
-//    @RequestMapping("/service-instances/{applicationName}")
-//    public List<ServiceInstance> serviceInstancesByApplicationName(
-//            @PathVariable String applicationName) {
-//        return this.discoveryClient.getInstances(applicationName);
-//    }
-//}

@@ -5,6 +5,13 @@ spring:
       date-format: yyyy-MM-dd HH:mm:ss
       time-zone: GMT+8
       default-property-inclusion: non_null
+#  security:
+#    basic:
+#      enabled: true
+#    user:
+#      name: root          # 用户名
+#      password: 123456    # 密码
+#      添加登录用户的时候用
 server:
   port: 8761 #启动端口
 eureka:
@@ -19,14 +26,13 @@ eureka:
     service-url:
 #      defaultZone: http://${eureka.instance.hostname}:${server.port}/${spring.application.name}/
       defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://root:123456@localhost:8761/eureka/
   server:
     enable-self-preservation: false    # 关闭 Eureka 的自我保护模式
 info:
   name: 注册中心
   desc: 注册中心是所有接口的主入口
 management:
-  security:
-    enabled: false
   endpoints:
     web:
       exposure:
