@@ -8,6 +8,8 @@
         <module>mongodb</module>
 		<module>security</module>
 		<module>mybatis</module>
+		<module>eureka</module>
+		<module>admintest</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
