@@ -12,4 +12,5 @@ public class ConfigApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConfigApplication.class, args);
     }
+//    http://localhost:8781/product-dev.properties
 }

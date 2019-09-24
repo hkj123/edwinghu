@@ -8,7 +8,7 @@ spring:
           basedir: /hkj123/config
           uri: https://github.com/hkj123/config
           username: 190916516@qq.com
-          password: hukaijia.110
+          password: hukaijia110
 server:
   port: 8781 #启动端口
 
