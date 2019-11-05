@@ -19,7 +19,7 @@
         <pagehelper.version>1.2.12</pagehelper.version>
         <druid.version>1.1.18</druid.version>
         <springfox.version>2.9.2</springfox.version>
-        <jackson-version>2.3.1</jackson-version>
+        <jackson-version>2.10.0</jackson-version>
     </properties>
 
     <dependencies>
