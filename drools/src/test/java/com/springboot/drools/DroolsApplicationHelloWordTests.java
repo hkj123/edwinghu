@@ -23,6 +23,7 @@ public class DroolsApplicationHelloWordTests {
     @Test
     public void testHelloWord() {
         kieSession.fireAllRules();
+//        kieSession.fireAllRules方法是执行所有的规
     }
     @Test
     public void testUser() {
