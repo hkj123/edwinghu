@@ -12,7 +12,8 @@
 		<module>admintest</module>
         <module>config</module>
 		<module>configclient</module>
-	</modules>
+        <module>drools</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
