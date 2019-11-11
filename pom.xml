@@ -13,6 +13,7 @@
         <module>config</module>
 		<module>configclient</module>
         <module>drools</module>
+        <module>activiti</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
