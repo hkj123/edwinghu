@@ -1,2 +1,11 @@
 /.idea
 /*.iml
+/eureka/*.iml
+/consul/*.iml
+/security/*.iml
+/mybatis/*.iml
+/mongodb/*.iml
+/gateway/*.iml
+/configclient/*.iml
+/config/*.iml
+/admintest/*.iml
