@@ -1,5 +1,5 @@
 package rules;
-import cn.org.zhixiang.entity.User;
+import com.springboot.drools.entity.User;
 import java.lang.String;
 import java.util.List;
 

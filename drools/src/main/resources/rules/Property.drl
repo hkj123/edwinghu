@@ -1,5 +1,5 @@
 package rules;
-import cn.org.zhixiang.entity.User;
+import com.springboot.drools.entity.User;
 
 rule "salience2"
 salience 2
