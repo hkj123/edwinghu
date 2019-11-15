@@ -25,7 +25,7 @@ public class infinispanTest {
 //                .build();
         Configuration configuration = new ConfigurationBuilder().addServer().host("127.0.0.1").port(9999).build();
         RemoteCacheManager manager = new RemoteCacheManager(configuration);
-        RemoteCache<String,String> cache = manager.getCache();
+        RemoteCache<String,String> cache = manager.getCache("dist");
 //        cache.put("hukaijia","test");
 //        cache.put("car", "ferrari");
 //        cache.values();
