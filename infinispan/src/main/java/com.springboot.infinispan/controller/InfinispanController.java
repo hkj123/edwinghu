@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
 
 
 @RestController   //注意模板 需要这个
@@ -61,7 +62,7 @@ public class InfinispanController {
                 new ConfigurationBuilder()
                         .clustering()
                         .cacheMode(CacheMode.DIST_SYNC)
-                        .hash().numOwners(2)
+                        .hash().numOwners(1)
                         .build()
         );
         // The only way to get the "repl" cache to be exactly the same as the default cache is to not define it at all
@@ -86,10 +87,14 @@ public class InfinispanController {
                 int counter = 0;
                 while (true) {
                     try {
-                        cache.put("key-" + counter, "" + cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
-                        System.out.println("key-" + counter+"*************"+"value"+cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
-                        String key="key-" + counter;
+                        cache.put("key" + counter, "" + cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
+                        System.out.println("key" + counter+"*************"+"value"+cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
+                        String key="key" + counter;
                         System.out.println("***********"+cache.get(key));
+                        System.out.println("***********"+cache.getVersion());
+                        if(Objects.nonNull(cache.get("hukaijia"))){
+                            System.out.println("客户端添加返回***********"+cache.get("hukaijia"));
+                        }
                     } catch (Exception e) {
                     }
                     counter++;
