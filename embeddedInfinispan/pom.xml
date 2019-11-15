@@ -9,17 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>infinispan</artifactId>
-
+    <artifactId>embeddedInfinispan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
         <infinispan.version>9.4.16.Final</infinispan.version>
-        <!--<infinispan.version>7.1.0.Final</infinispan.version>-->
         <version.jgroups>4.1.0.Final</version.jgroups>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,11 +57,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-remote-query-server</artifactId>
-            <version>${infinispan.version}</version>
+            <groupId>org.jgroups</groupId>
+            <artifactId>jgroups</artifactId>
+            <version>${version.jgroups}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -73,7 +69,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.springboot.infinispan.InfinispanApplication</mainClass>
+                    <mainClass>com.springboot.infinispan.EmbeddedInfinispanApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

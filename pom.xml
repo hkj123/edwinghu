@@ -15,6 +15,7 @@
         <module>drools</module>
         <module>activiti</module>
 		<module>infinispan</module>
+        <module>embeddedInfinispan</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
