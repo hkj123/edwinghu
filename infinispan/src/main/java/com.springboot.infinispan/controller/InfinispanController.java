@@ -2,8 +2,11 @@ package com.springboot.infinispan.controller;
 
 
 import org.infinispan.Cache;
+import org.infinispan.client.hotrod.ProtocolVersion;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
+import org.infinispan.client.hotrod.configuration.Configuration;
 import org.infinispan.configuration.cache.CacheMode;
-import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.global.GlobalConfiguration;
 import org.infinispan.configuration.global.GlobalConfigurationBuilder;
@@ -51,63 +54,29 @@ public class InfinispanController {
 
     public static void main(String[] args) throws Exception {
 
-       EmbeddedCacheManager cacheManager  = new DefaultCacheManager(
+        System.out.println("Starting a cache manager with a programmatic configuration");
+        DefaultCacheManager manager = new DefaultCacheManager(
                 GlobalConfigurationBuilder.defaultClusteredBuilder()
-//                        .transport().nodeName("test1").addProperty("configurationFile", "jgroups.xml")
-//                        .build(),
-                        .transport().nodeName("test1")
-                        .globalJmxStatistics()
-                        .enable()
+                        .transport().addProperty("configurationFile", "jgroups-tcp.xml")
                         .build(),
                 new ConfigurationBuilder()
                         .clustering()
-                        .cacheMode(CacheMode.DIST_SYNC)
-                        .hash().numOwners(1)
+                        .cacheMode(CacheMode.REPL_SYNC)
                         .build()
         );
         // The only way to get the "repl" cache to be exactly the same as the default cache is to not define it at all
-        cacheManager.defineConfiguration("dist", new ConfigurationBuilder()
+        manager.defineConfiguration("dist", new ConfigurationBuilder()
                 .clustering()
                 .cacheMode(CacheMode.DIST_SYNC)
                 .hash().numOwners(2)
                 .build()
         );
-        System.out.printf("status"+cacheManager.getStats()+"address"+cacheManager.getAddress());
-        final Cache<String, String> cache = cacheManager.getCache("dist",true);
-        System.out.printf("Cache %s started on %s, cache members are now %s\n", "dist", cacheManager.getAddress(),
-                cache.getAdvancedCache().getRpcManager().getMembers());
+        Cache<String, String> cache = manager.getCache(cacheName);
 
         HotRodServerConfiguration serverConfig = new HotRodServerConfigurationBuilder()
                 .host("127.0.0.1").port(9999).build();
         HotRodServer server = new HotRodServer();
         server.start(serverConfig, cacheManager);
-        Thread putThread = new Thread() {
-            @Override
-            public void run() {
-                int counter = 0;
-                while (true) {
-                    try {
-                        cache.put("key" + counter, "" + cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
-                        System.out.println("key" + counter+"*************"+"value"+cache.getAdvancedCache().getRpcManager().getAddress() + "-" + counter);
-                        String key="key" + counter;
-                        System.out.println("***********"+cache.get(key));
-                        System.out.println("***********"+cache.getVersion());
-                        if(Objects.nonNull(cache.get("hukaijia"))){
-                            System.out.println("客户端添加返回***********"+cache.get("hukaijia"));
-                        }
-                    } catch (Exception e) {
-                    }
-                    counter++;
-
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                }
-            }
-        };
-        putThread.start();
 
    }
 }

@@ -14,8 +14,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <infinispan.version>9.4.16.Final</infinispan.version>
-        <version.jgroups>4.1.0.Final</version.jgroups>
+        <infinispan.version>10.0.1.Final</infinispan.version>
     </properties>
     <dependencies>
         <dependency>
@@ -31,36 +30,22 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
             <version>${infinispan.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-cachestore-remote</artifactId>
-            <version>${infinispan.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-server-hotrod</artifactId>
-            <version>${infinispan.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-client-hotrod</artifactId>
-            <version>${infinispan.version}</version>
+            <version>10.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-commons</artifactId>
+            <version>10.0.1.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.jgroups</groupId>
-            <artifactId>jgroups</artifactId>
-            <version>${version.jgroups}</version>
-        </dependency>
     </dependencies>
 
     <build>
