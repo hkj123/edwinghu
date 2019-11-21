@@ -16,6 +16,7 @@
         <module>activiti</module>
 		<module>infinispan</module>
         <module>embeddedInfinispan</module>
+        <module>jgroup</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

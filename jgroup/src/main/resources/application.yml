@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config
+
+server:
+  port: 8781 #启动端口
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
