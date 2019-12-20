@@ -9,4 +9,8 @@ public interface UserService {
     List<User> findAll();
 
     Page<User> findByPaging();
+
+    default String a(){
+        return "a";
+    }
 }

@@ -17,6 +17,7 @@
 		<module>infinispan</module>
         <module>embeddedInfinispan</module>
         <module>jgroup</module>
+        <module>i18n</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
