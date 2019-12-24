@@ -2,14 +2,14 @@ package com.springboot.mybatis.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.applet.*;
+import java.awt.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class AppletController {
+public class AppletController extends Applet{
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public AppletController() {
+    public void paint (Graphics g)
+    {
+        g.drawString ("Hello World", 25, 50);
     }
-
 }

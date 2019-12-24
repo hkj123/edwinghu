@@ -52,31 +52,31 @@ public class InfinispanController {
 //
 //    }
 
-    public static void main(String[] args) throws Exception {
-
-        System.out.println("Starting a cache manager with a programmatic configuration");
-        DefaultCacheManager manager = new DefaultCacheManager(
-                GlobalConfigurationBuilder.defaultClusteredBuilder()
-                        .transport().addProperty("configurationFile", "jgroups-tcp.xml")
-                        .build(),
-                new ConfigurationBuilder()
-                        .clustering()
-                        .cacheMode(CacheMode.REPL_SYNC)
-                        .build()
-        );
-        // The only way to get the "repl" cache to be exactly the same as the default cache is to not define it at all
-        manager.defineConfiguration("dist", new ConfigurationBuilder()
-                .clustering()
-                .cacheMode(CacheMode.DIST_SYNC)
-                .hash().numOwners(2)
-                .build()
-        );
-        Cache<String, String> cache = manager.getCache(cacheName);
-
-        HotRodServerConfiguration serverConfig = new HotRodServerConfigurationBuilder()
-                .host("127.0.0.1").port(9999).build();
-        HotRodServer server = new HotRodServer();
-        server.start(serverConfig, cacheManager);
-
-   }
+//    public static void main(String[] args) throws Exception {
+//
+//        System.out.println("Starting a cache manager with a programmatic configuration");
+//        DefaultCacheManager manager = new DefaultCacheManager(
+//                GlobalConfigurationBuilder.defaultClusteredBuilder()
+//                        .transport().addProperty("configurationFile", "jgroups-tcp.xml")
+//                        .build(),
+//                new ConfigurationBuilder()
+//                        .clustering()
+//                        .cacheMode(CacheMode.REPL_SYNC)
+//                        .build()
+//        );
+//        // The only way to get the "repl" cache to be exactly the same as the default cache is to not define it at all
+//        manager.defineConfiguration("dist", new ConfigurationBuilder()
+//                .clustering()
+//                .cacheMode(CacheMode.DIST_SYNC)
+//                .hash().numOwners(2)
+//                .build()
+//        );
+//        Cache<String, String> cache = manager.getCache("cachename");
+//
+//        HotRodServerConfiguration serverConfig = new HotRodServerConfigurationBuilder()
+//                .host("127.0.0.1").port(9999).build();
+//        HotRodServer server = new HotRodServer();
+//        server.start(serverConfig, cacheManager);
+//
+//   }
 }

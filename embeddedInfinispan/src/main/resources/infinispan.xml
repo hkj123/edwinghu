@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns="urn:infinispan:config:9.4">
+    <cache-container>
+        <jmx domain="infinispan.embedded.example"/>
+        <local-cache name="local" statistics="true"/>
+    </cache-container>
+</infinispan>

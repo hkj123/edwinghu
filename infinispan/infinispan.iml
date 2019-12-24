@@ -15,8 +15,8 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/../target/classes" />
-    <output-test url="file://$MODULE_DIR$/../target/test-classes" />
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
@@ -151,9 +151,9 @@
     <orderEntry type="library" name="Maven: com.thoughtworks.xstream:xstream:1.4.11.1" level="project" />
     <orderEntry type="library" name="Maven: xmlpull:xmlpull:1.1.3.1" level="project" />
     <orderEntry type="library" name="Maven: xpp3:xpp3_min:1.1.4c" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-core:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-commons:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jgroups:jgroups:4.0.20.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-core:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-commons:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.jgroups:jgroups:4.0.18.Final" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.3.3" level="project" />
@@ -162,8 +162,8 @@
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.0.Final" level="project" />
     <orderEntry type="library" name="Maven: io.reactivex.rxjava2:rxjava:2.2.9" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-cachestore-remote:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-client-hotrod:9.4.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-cachestore-remote:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-client-hotrod:9.4.14.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.36.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.36.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.36.Final" level="project" />
@@ -172,31 +172,31 @@
     <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.36.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.36.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.36.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-multimap:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-server-hotrod:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-server-core:9.4.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-multimap:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-server-hotrod:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-server-core:9.4.14.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-epoll:4.1.36.Final" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.11.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.11.2" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-tasks:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-tasks-api:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-clustered-counter:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-remote-query-server:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-query:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-objectfilter:9.4.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-tasks:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-tasks-api:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-clustered-counter:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-remote-query-server:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-query:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-objectfilter:9.4.14.Final" level="project" />
     <orderEntry type="library" name="Maven: org.antlr:antlr-runtime:3.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-directory-provider:9.4.16.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-directory-provider:9.4.14.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-serialization-avro:5.10.3.Final" level="project" />
     <orderEntry type="library" name="Maven: org.apache.avro:avro:1.7.6" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-lucene-directory:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-query-dsl:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan:infinispan-remote-query-client:9.4.16.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.infinispan.protostream:protostream:4.2.3.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-lucene-directory:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-query-dsl:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan:infinispan-remote-query-client:9.4.14.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.infinispan.protostream:protostream:4.2.2.Final" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.squareup:protoparser:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-engine:5.10.3.Final" level="project" />

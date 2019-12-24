@@ -9,18 +9,21 @@ server:
 spring:
   application:
     name: Infinispan-service
+
 #  profiles:
 #    active: @spring.profiles.active@
 
 eureka:
   client:
     registryFetchIntervalSeconds: 5
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-
+infinispan:
+  embedded:
+    config-xml: infinispan.xml
 
 logging:
   level:
