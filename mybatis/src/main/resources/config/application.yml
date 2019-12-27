@@ -6,29 +6,36 @@ info:
 server:
   port: 8094
 
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 spring:
   application:
     name: mybatis-service
 #  profiles:
 #    active: @spring.profiles.active@
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery: # 服务发现配置
-        enabled: true
-        register: true
-        deregister: true
-        prefer-ip-address: true
-        health-check-interval: 10s
-        health-check-critical-timeout: 30s
-        health-check-path: /health
-        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} # 应用名称+服务器IP+端口
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery: # 服务发现配置
+#        enabled: true
+#        register: true
+#        deregister: true
+#        prefer-ip-address: true
+#        health-check-interval: 10s
+#        health-check-critical-timeout: 30s
+#        health-check-path: /health
+#        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} # 应用名称+服务器IP+端口
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#      routes:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

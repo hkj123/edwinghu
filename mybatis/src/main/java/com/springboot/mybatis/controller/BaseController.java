@@ -9,6 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.jwk.*;
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -24,7 +26,7 @@ public class BaseController {
     public BaseController() {
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 //        String clientSecretString = "adf81d34-ffac-47d4-9be0-fa4d2e7316b3";
 //        SecretKey clientSecret = new SecretKeySpec(clientSecretString.getBytes("UTF-8"), "HmacSHA256");
 //// Convert to JWK format
@@ -91,11 +93,98 @@ public class BaseController {
 //                }
 //            }
 //        }
-        Map map = new HashMap();
-        map.put("1","111111");
-        map.put("2","222222");
-        System.out.println( map.keySet());
+//          List<Integer> list = Arrays.asList(1,3,7,4,2);
+//          Collections.sort(list,Comparator.reverseOrder());
+//         for(Integer a:list) {
+//             System.out.println(a);
+//         }
+//        List<String> stringList = Arrays.asList("a","c","b");
+////        Collections.sort(stringList,Comparator.naturalOrder());
+//        Collections.sort(stringList,(a,b)->b.compareTo(a));
+//        for(String b:stringList) {
+//            System.out.println(b);
+//        }
+//
+//        int[] d = {1,3,2,4,1};
+//        Arrays.sort(d,0,3);
+//        for(int e:d) {
+//            System.out.println(e);
+//        }
+
+        int[][] twoWei = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}
+        };
+        int x = twoWei[0].length;
+        int y = twoWei.length;
+//        System.out.println(x);
+//        System.out.println(y);
+
+        String s = "Test string";
+        int n1 = s.indexOf('t');
+        int n2 = s.indexOf("st");
+        int n3 = s.indexOf("st", 4);
+        System.out.println(n1);
+        System.out.println(n2);
+        System.out.println(n3);
+
+        "Hello".indexOf("l"); // 2
+        "Hello".lastIndexOf("l"); // 3
+        "Hello".startsWith("He"); // true
+        "Hello".endsWith("lo"); // true
+        "Hello".substring(2); // "llo"
+        "Hello".substring(2, 4); //"ll"
+
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("胡");
+        stringBuffer.append("开");
+        stringBuffer.append("甲");
+        System.out.println(stringBuffer.toString());
+
+        String[] names = {"Bob", "Alice", "Grace"};
+        StringJoiner sj = new StringJoiner(", ");
+        for (String name : names) {
+            sj.add(name);
+        }
+        System.out.println(sj.toString());
+
+        BigDecimal d1 = new BigDecimal("123.456789");
+        BigDecimal d2 = d1.setScale(4, RoundingMode.HALF_UP); // 四舍五入，123.4568
+        BigDecimal d3 = d1.setScale(4, RoundingMode.DOWN); // 直接截断，123.4567
+
+        List<String> list = Arrays.asList("A", "B", "C");
+        System.out.println(list.contains(new String("C"))); // true or false?
+        System.out.println(list.indexOf(new String("C"))); // 2 or -1?
+
+//        Date date = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        System.out.println(sdf.format(date));
+
+        // 获取当前时间:
+        Date date = new Date();
+        System.out.println(date.getYear() + 1900); // 必须加上1900
+        System.out.println(date.getMonth() + 1); // 0~11，必须加上1
+        System.out.println(date.getDate()); // 1~31，不能加1
+        // 转换为String:
+        System.out.println(date.toString());
+        // 转换为GMT时区:
+        System.out.println(date.toGMTString());
+        // 转换为本地时区:
+        System.out.println(date.toLocaleString());
+
+
+        // 获取当前时间:
+        Calendar c = Calendar.getInstance();
+        int y1 = c.get(Calendar.YEAR);
+        int m = 1 + c.get(Calendar.MONTH);
+        int d = c.get(Calendar.DAY_OF_MONTH);
+        int w = c.get(Calendar.DAY_OF_WEEK);
+        int hh = c.get(Calendar.HOUR_OF_DAY);
+        int mm = c.get(Calendar.MINUTE);
+        int ss = c.get(Calendar.SECOND);
+        int ms = c.get(Calendar.MILLISECOND);
+        System.out.println(y1 + "-" + m + "-" + d + " " + w + " " + hh + ":" + mm + ":" + ss + "." + ms);
 
     }
-
 }
