@@ -13,8 +13,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -26,7 +25,7 @@ public class BaseController {
     public BaseController() {
     }
 
-    public static void main(String[] args) throws Exception {
+//    public static void main(String[] args) throws Exception {
 //        String clientSecretString = "adf81d34-ffac-47d4-9be0-fa4d2e7316b3";
 //        SecretKey clientSecret = new SecretKeySpec(clientSecretString.getBytes("UTF-8"), "HmacSHA256");
 //// Convert to JWK format
@@ -111,80 +110,98 @@ public class BaseController {
 //            System.out.println(e);
 //        }
 
-        int[][] twoWei = {
-                {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12}
-        };
-        int x = twoWei[0].length;
-        int y = twoWei.length;
-//        System.out.println(x);
-//        System.out.println(y);
-
-        String s = "Test string";
-        int n1 = s.indexOf('t');
-        int n2 = s.indexOf("st");
-        int n3 = s.indexOf("st", 4);
-        System.out.println(n1);
-        System.out.println(n2);
-        System.out.println(n3);
-
-        "Hello".indexOf("l"); // 2
-        "Hello".lastIndexOf("l"); // 3
-        "Hello".startsWith("He"); // true
-        "Hello".endsWith("lo"); // true
-        "Hello".substring(2); // "llo"
-        "Hello".substring(2, 4); //"ll"
-
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("胡");
-        stringBuffer.append("开");
-        stringBuffer.append("甲");
-        System.out.println(stringBuffer.toString());
-
-        String[] names = {"Bob", "Alice", "Grace"};
-        StringJoiner sj = new StringJoiner(", ");
-        for (String name : names) {
-            sj.add(name);
-        }
-        System.out.println(sj.toString());
-
-        BigDecimal d1 = new BigDecimal("123.456789");
-        BigDecimal d2 = d1.setScale(4, RoundingMode.HALF_UP); // 四舍五入，123.4568
-        BigDecimal d3 = d1.setScale(4, RoundingMode.DOWN); // 直接截断，123.4567
-
-        List<String> list = Arrays.asList("A", "B", "C");
-        System.out.println(list.contains(new String("C"))); // true or false?
-        System.out.println(list.indexOf(new String("C"))); // 2 or -1?
+//        int[][] twoWei = {
+//                {1, 2, 3, 4},
+//                {5, 6, 7, 8},
+//                {9, 10, 11, 12}
+//        };
+//        int x = twoWei[0].length;
+//        int y = twoWei.length;
+////        System.out.println(x);
+////        System.out.println(y);
+//
+//        String s = "Test string";
+//        int n1 = s.indexOf('t');
+//        int n2 = s.indexOf("st");
+//        int n3 = s.indexOf("st", 4);
+//        System.out.println(n1);
+//        System.out.println(n2);
+//        System.out.println(n3);
+//
+//        "Hello".indexOf("l"); // 2
+//        "Hello".lastIndexOf("l"); // 3
+//        "Hello".startsWith("He"); // true
+//        "Hello".endsWith("lo"); // true
+//        "Hello".substring(2); // "llo"
+//        "Hello".substring(2, 4); //"ll"
+//
+//        StringBuffer stringBuffer = new StringBuffer();
+//        stringBuffer.append("胡");
+//        stringBuffer.append("开");
+//        stringBuffer.append("甲");
+//        System.out.println(stringBuffer.toString());
+//
+//        String[] names = {"Bob", "Alice", "Grace"};
+//        StringJoiner sj = new StringJoiner(", ");
+//        for (String name : names) {
+//            sj.add(name);
+//        }
+//        System.out.println(sj.toString());
+//
+//        BigDecimal d1 = new BigDecimal("123.456789");
+//        BigDecimal d2 = d1.setScale(4, RoundingMode.HALF_UP); // 四舍五入，123.4568
+//        BigDecimal d3 = d1.setScale(4, RoundingMode.DOWN); // 直接截断，123.4567
+//
+//        List<String> list = Arrays.asList("A", "B", "C");
+//        System.out.println(list.contains(new String("C"))); // true or false?
+//        System.out.println(list.indexOf(new String("C"))); // 2 or -1?
 
 //        Date date = new Date();
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        System.out.println(sdf.format(date));
 
-        // 获取当前时间:
-        Date date = new Date();
-        System.out.println(date.getYear() + 1900); // 必须加上1900
-        System.out.println(date.getMonth() + 1); // 0~11，必须加上1
-        System.out.println(date.getDate()); // 1~31，不能加1
-        // 转换为String:
-        System.out.println(date.toString());
-        // 转换为GMT时区:
-        System.out.println(date.toGMTString());
-        // 转换为本地时区:
-        System.out.println(date.toLocaleString());
+//        // 获取当前时间:
+//        Date date = new Date();
+//        System.out.println(date.getYear() + 1900); // 必须加上1900
+//        System.out.println(date.getMonth() + 1); // 0~11，必须加上1
+//        System.out.println(date.getDate()); // 1~31，不能加1
+//        // 转换为String:
+//        System.out.println(date.toString());
+//        // 转换为GMT时区:
+//        System.out.println(date.toGMTString());
+//        // 转换为本地时区:
+//        System.out.println(date.toLocaleString());
+//
+//
+//        // 获取当前时间:
+//        Calendar c = Calendar.getInstance();
+//        int y1 = c.get(Calendar.YEAR);
+//        int m = 1 + c.get(Calendar.MONTH);
+//        int d = c.get(Calendar.DAY_OF_MONTH);
+//        int w = c.get(Calendar.DAY_OF_WEEK);
+//        int hh = c.get(Calendar.HOUR_OF_DAY);
+//        int mm = c.get(Calendar.MINUTE);
+//        int ss = c.get(Calendar.SECOND);
+//        int ms = c.get(Calendar.MILLISECOND);
+//        System.out.println(y1 + "-" + m + "-" + d + " " + w + " " + hh + ":" + mm + ":" + ss + "." + ms);
+//
+//        TimeZone tzDefault = TimeZone.getDefault(); // 当前时区
+//        TimeZone tzGMT9 = TimeZone.getTimeZone("GMT+09:00"); // GMT+9:00时区
+//        TimeZone tzNY = TimeZone.getTimeZone("America/New_York"); // 纽约时区
+//        System.out.println(tzDefault.getID()); // Asia/Shanghai
+//        System.out.println(tzGMT9.getID()); // GMT+09:00
+//        System.out.println(tzNY.getID()); // America/New_York
 
-
-        // 获取当前时间:
-        Calendar c = Calendar.getInstance();
-        int y1 = c.get(Calendar.YEAR);
-        int m = 1 + c.get(Calendar.MONTH);
-        int d = c.get(Calendar.DAY_OF_MONTH);
-        int w = c.get(Calendar.DAY_OF_WEEK);
-        int hh = c.get(Calendar.HOUR_OF_DAY);
-        int mm = c.get(Calendar.MINUTE);
-        int ss = c.get(Calendar.SECOND);
-        int ms = c.get(Calendar.MILLISECOND);
-        System.out.println(y1 + "-" + m + "-" + d + " " + w + " " + hh + ":" + mm + ":" + ss + "." + ms);
-
-    }
+//        LocalDate d = LocalDate.now(); // 当前日期
+//        LocalTime t = LocalTime.now(); // 当前时间
+//        LocalDateTime dt = LocalDateTime.now(); // 当前日期和时间
+//        System.out.println(d); // 严格按照ISO 8601格式打印
+//        System.out.println(t); // 严格按照ISO 8601格式打印
+//        System.out.println(dt); // 严格按照ISO 8601格式打印
+//
+//        ZonedDateTime zbj = ZonedDateTime.now(); // 默认时区
+//        ZonedDateTime zny = ZonedDateTime.now(ZoneId.of("America/New_York")); // 用指定时区获取当前时间
+//        System.out.println(zbj);
+//        System.out.println(zny);
+//    }
 }
