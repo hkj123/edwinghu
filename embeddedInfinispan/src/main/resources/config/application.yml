@@ -21,9 +21,9 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-infinispan:
-  embedded:
-    config-xml: infinispan.xml
+#infinispan:
+#  embedded:
+#    config-xml: infinispan.xml
 
 logging:
   level:

@@ -1,23 +1,49 @@
 package com.springboot.mybatis.controller;
 
-import com.springboot.mybatis.service.AsyncService;
-import com.springboot.mybatis.utils.Result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController   //注意模板 需要这个
 public class ThreadController extends BaseController {
-    @Autowired
-    private AsyncService asyncService;
+    public static void main(String[] args) {
+        Thread t = new MyThread();
+        t.start(); // 启动新线程
 
-    @GetMapping("/sss")
-    public Result sss(){
+        Thread t1 = new Thread(new MyRunnable());
+        t1.start(); // 启动新线程
 
-        //调用service层的任务
-        asyncService.executeAsync();
+        Thread t2 = new Thread(() -> {
+            System.out.println("线程thread lambda写法");
+        });
+        t2.start(); // 启动新线程
 
-        return new Result(Result.ReturnValue.SUCCESS, "");
+        System.out.println("main start...");
+        Thread t3 = new Thread() {
+            public void run() {
+                System.out.println("thread run...");
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {}
+                System.out.println("thread end.");
+            }
+        };
+        t3.start();
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {}
+        System.out.println("main end...");
     }
+}
 
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("线程thread extends Thread");
+    }
+}
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("线程thread implements Runnable");
+    }
 }
