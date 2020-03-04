@@ -18,6 +18,7 @@
         <module>embeddedInfinispan</module>
         <module>jgroup</module>
         <module>i18n</module>
+        <module>gatewayredis</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

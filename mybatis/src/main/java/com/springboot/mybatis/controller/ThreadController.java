@@ -2,6 +2,8 @@ package com.springboot.mybatis.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -46,6 +48,10 @@ public class ThreadController extends BaseController {
         Counter t4 = new Counter();
         t4.add(1);
     }
+    int min = 4;
+    int max = 10;
+    ExecutorService es = new ThreadPoolExecutor(min, max,
+            60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
 }
 
 class MyThread extends Thread {

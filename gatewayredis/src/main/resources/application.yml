@@ -1,0 +1,79 @@
+info:
+  app:
+    version: 2.2.0.M4
+    name: gateway
+
+server:
+  port: 8091
+
+spring:
+  application:
+    name: gateway-service
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: # 服务发现配置
+        enabled: true
+        register: true
+        deregister: true
+        prefer-ip-address: true
+        health-check-interval: 10s
+        health-check-critical-timeout: 30s
+        health-check-path: /health
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port} # 应用名称+服务器IP+端口
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+            # This route rule used to forward request to activity server
+      - id: test-route
+      uri: http://localhost:8090
+      predicates:
+        - Path=/test/**
+#        - Weight=group1, 8
+#        - RemoteAddr=192.168.1.1/24
+#        - Path=/red/{segment},/blue/{segment}
+#        - Query=green
+#        - Method=GET,POST
+#        - Host=**.somehost.org,**.anotherhost.org
+#        - Header=X-Request-Id, \d+
+#        - Cookie=chocolate, ch.p
+#        - Between=2017-01-20T17:42:47.789-07:00[America/Denver], 2017-01-21T17:42:47.789-07:00[America/Denver]
+#        - Before=2017-01-20T17:42:47.789-07:00[America/Denver]
+#        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+#        - name: Cookie
+#            args:
+#              name: mycookie
+#              regexp: mycookievalue
+      filters:
+        - StripPrefix=1
+#        - RewritePath=/red(?<segment>/?.*), $\{segment}
+#        - RemoveRequestParameter=red
+#        - RemoveResponseHeader=X-Response-Foo
+#        - RemoveRequestHeader=X-Request-Foo
+#        - RedirectTo=302, https://acme.org
+#        - name: RequestRateLimiter
+#          args:
+#            redis-rate-limiter.replenishRate: 10
+#            redis-rate-limiter.burstCapacity: 20
+#            redis-rate-limiter.requestedTokens: 1
+#        - PrefixPath=/mypath
+#        - MapRequestHeader=Blue, X-Request-Red
+#        - name: CircuitBreaker
+#          args:
+#            name: myCircuitBreaker
+#            fallbackUri: forward:/inCaseOfFailureUseThis
+#        - RewritePath=/consumingServiceEndpoint, /backingServiceEndpoint
+#        - CircuitBreaker=myCircuitBreaker
+#        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#        - AddRequestParameter=red, blue
+#        - AddRequestHeader=X-Request-red, blue
+#  Gateway默认转发是全路径的，设置StripPrefix=1表示从二级url路径转发，即http://localhost:port/activity/test将会转发到http://{activity}/test
+#  When a request is made through the gateway to /name/blue/red, the request made to nameservice looks like nameservice/red. - StripPrefix=2
+logging:
+  level:
+    org.springframework.cloud.consul: DEBUG
